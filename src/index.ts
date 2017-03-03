@@ -1,4 +1,4 @@
-interface Callback<T> {
+export interface Callback<T> {
     (data?: T): void;
 }
 
