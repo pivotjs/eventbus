@@ -1,14 +1,14 @@
-export interface Callback<T> {
+export interface EventCallback<T> {
     (data?: T): void;
 }
-export default class EventBus {
+export declare class EventBus {
     listeners: {
         [eventId: string]: {
-            [listenerId: string]: Callback<any>;
+            [listenerId: string]: EventCallback<any>;
         };
     };
     constructor();
-    on<T>(eventId: string, callback: Callback<T>): string;
+    on<T>(eventId: string, callback: EventCallback<T>): string;
     off(eventId: string, listenerId: string): void;
     fire<T>(eventId: string, data?: T): void;
 }

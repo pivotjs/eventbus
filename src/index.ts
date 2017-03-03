@@ -1,11 +1,11 @@
-export interface Callback<T> {
+export interface EventCallback<T> {
     (data?: T): void;
 }
 
-export default class EventBus {
+export class EventBus {
     listeners: {
         [eventId: string]: {
-            [listenerId: string]: Callback<any>;
+            [listenerId: string]: EventCallback<any>;
         }
     };
 
@@ -13,7 +13,7 @@ export default class EventBus {
         this.listeners = {};
     }
 
-    on<T>(eventId: string, callback: Callback<T>): string {
+    on<T>(eventId: string, callback: EventCallback<T>): string {
         if (this.listeners[eventId] === undefined) {
             this.listeners[eventId] = {};
         }
@@ -38,3 +38,4 @@ export default class EventBus {
         }
     }
 }
+
