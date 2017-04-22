@@ -2,11 +2,7 @@ export interface EventCallback<T> {
     (data?: T): void;
 }
 export declare class EventBus {
-    listeners: {
-        [eventId: string]: {
-            [listenerId: string]: EventCallback<any>;
-        };
-    };
+    private listeners;
     constructor();
     on<T>(eventId: string, callback: EventCallback<T>): string;
     off(eventId: string, listenerId: string): void;

@@ -3,7 +3,7 @@ export interface EventCallback<T> {
 }
 
 export class EventBus {
-    listeners: {
+    private listeners: {
         [eventId: string]: {
             [listenerId: string]: EventCallback<any>;
         }
